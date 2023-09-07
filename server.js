@@ -2,28 +2,24 @@ const express = require('express');
 const path = require('path')
 const app = express()
 const PORT = process.env.PORT || 3001;
-const fs = require('fs')
+const api = require('./Develop/routes/index.js')
 
-const readAndAppend = (content, file) => {
-    fs.readFile(file, 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-        } else {
-            const parsedData = JSON.parse(data);
-            parsedData.push(content);
-            writeToFile(file, parsedData);
-        }
-    });
-};
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 
+// GET route for index.html
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, './public/index.html'))
+  res.sendFile(path.join(process.cwd(), './Develop/public/index.html'))
 );
 
+// GET route for notes.html
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, './Develop/public/notes.html'))
 );
 
+// GET route for Wildcard. Will bring user back to the home page.
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, './Develop/public/index.html'))
 );
