@@ -34,7 +34,7 @@ notes.post('/', (req, res) => {
             text,
             id: uuid(),
         };
-        
+
         readAndAppend(newNote, './db/db.json');
         res.json(('Successfully added new Note'));
     } else {
@@ -49,17 +49,17 @@ notes.delete('/:id', (req, res) => {
 
     // Iterate through the id name to check if it matches `req.params.id`
     readFromFile('./db/db.json').then((data) => JSON.parse(data)).then((dbData) => {
-=        for (let i = 0; i < dbData.length; i++) {
-=        if (requestedId === dbData[i].id) {
-            readAndDelete(dbData[i], './db/db.json');
-=        }
-    }
+        for (let i = 0; i < dbData.length; i++) {
+            if (requestedId === dbData[i].id) {
+                readAndDelete(dbData[i], './db/db.json');
+            }
+        }
 
-    // Return a message if the id doesn't exist in the json
-    return res.json('No match found');
+        // Return a message if the id doesn't exist in the json
+        return res.json('No match found');
     });
 
-    
+
 });
 
 module.exports = notes;
