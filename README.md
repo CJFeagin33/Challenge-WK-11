@@ -29,9 +29,9 @@ Everything should already be installed in order to run this application.
 
 ## Usage
 
-In order to use this program, run npm start in the root directory. This will start an express server on your localhost which you can access by following the link in the terminal. From this point you can use the application as you please.
+In order to use this program, run npm start in the root directory. This will start an express server on your localhost which you can access by following the link in the terminal. From this point you can use the application as you please. 
 
-Here is a link to a video of me using this program: https://drive.google.com/file/d/1abF1bp4vP2FNekvkwO9o-Q-4HoBYFH5W/view
+If you would like to visit and use this application online without hosting it on your localhost, you can visit the deployed application at this link: https://fierce-crag-35886-d18da478add3.herokuapp.com/
 
 ## How to Contribute
 
